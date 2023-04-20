@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_performance_sample/high_performance.dart';
+import 'package:riverpod_performance_sample/low_performance.dart';
 import 'package:riverpod_performance_sample/providers.dart';
 
 final count1Provider = StateProvider<int>((ref) {
@@ -51,13 +52,9 @@ class MyHomePage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: IndexedStack(
-        index: currentTab,
-        children: const [
-          HighPerformanceSample(),
-          HighPerformanceSample(),
-        ],
-      ),
+      body: currentTab == 0
+          ? const HighPerformanceSample()
+          : const LowPerformanceSample(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) => {
           ref.read(currentTabProvider.notifier).state = value,
