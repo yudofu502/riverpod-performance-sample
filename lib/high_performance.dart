@@ -25,9 +25,9 @@ class HighPerformanceSample extends ConsumerWidget {
         const SizedBox(width: 16),
         Consumer(
           builder: (context, ref, child) {
-            final count1 = ref.watch(productProvider);
+            final product = ref.watch(productProvider);
             return NumberContainer(
-              number: count1,
+              number: product,
               color: Colors.green,
               isDark: true,
             );
